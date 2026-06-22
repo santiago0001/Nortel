@@ -36,7 +36,12 @@ document.getElementById("reviews-grid").innerHTML = SITE_CONFIG.reviews.map(revi
     <div class="reviewer"><i class="ph ph-user"></i><div><strong>${review.name}</strong><small>${review.place}</small></div></div>
   </article>`).join("");
 
-document.getElementById("brand-list").innerHTML = SITE_CONFIG.brands.map(brand => `<span>${brand}</span>`).join("");
+document.getElementById("brand-list").innerHTML = SITE_CONFIG.brands.map(brand => {
+  if (typeof brand === "object" && brand.image) {
+    return `<span class="brand-item"><img class="brand-logo" src="${brand.image}" alt="Logo de ${brand.name}"></span>`;
+  }
+  return `<span class="brand-item">${brand}</span>`;
+}).join("");
 
 const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.querySelector(".main-nav");

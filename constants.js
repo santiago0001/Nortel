@@ -8,7 +8,7 @@ const SITE_CONFIG = {
   whatsappText: "Hola Nortel, quiero solicitar un presupuesto.",
   whatsappFloatingText: "Hola Nortel, quiero hacer una consulta desde la web.",
   email: "electronicanortel@gmail.com",
-  address: "Av. Fleming 900, Martínez, Buenos Aires",
+  address: " Manzone 879 Acassuso, Buenos Aires",
   instagram: "https://www.instagram.com/nortel.ok/",
   googleMaps:
     "https://www.google.com/maps/search/?api=1&query=Av.+Fleming+900,+Martínez,+Buenos+Aires",
@@ -107,5 +107,11 @@ const SITE_CONFIG = {
       text: "Trabajamos hace años con Nortel para mantenimiento y control de accesos. Siempre responden rápido y con mucha profesionalidad.",
     },
   ],
-  brands: ["PPA", "MOTIC", "Nice", "ROSSI", "CAME"],
+  brands: [
+    { name: "PPA", image: "imagenes/marcas/PPA.png" },
+    "MOTIC",
+    "Nice",
+    "ROSSI",
+    "CAME"
+  ],
 };
