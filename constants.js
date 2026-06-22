@@ -16,7 +16,7 @@ const SITE_CONFIG = {
   images: {
     logo: "imagenes/logo.png",
     heroGate: "assets/hero-gate.png",
-    aboutGate: "assets/about-gate.png",
+    aboutGate: "assets/nosotros.jpeg",
     serviceAutomation: "",
     serviceCameras: "",
     serviceAccess: "",
@@ -112,6 +112,6 @@ const SITE_CONFIG = {
     "MOTIC",
     "Nice",
     "ROSSI",
-    "CAME"
+    "CAME",
   ],
 };
