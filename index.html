@@ -3,30 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="favicon/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-  <link rel="manifest" href="favicon/site.webmanifest">
+  <link rel="icon" data-versioned-href="favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" data-versioned-href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" data-versioned-href="favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" data-versioned-href="favicon/apple-touch-icon.png">
+  <link rel="manifest" data-dynamic-manifest data-icon-root="favicon">
   <meta name="theme-color" content="#FF5A1F">
   <title>Nortel | Automatización de Portones y Cámaras de Seguridad en Martínez</title>
   <meta name="description" content="Más de 30 años en automatización de portones, cámaras de seguridad, control de accesos y servicio técnico en Martínez, San Isidro y Zona Norte.">
   <meta name="keywords" content="automatización de portones, portones automáticos, cámaras de seguridad, control de accesos, servicio técnico portones, Martínez, San Isidro, Zona Norte">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://nortelautomatizacion.com.ar/">
   <meta property="og:title" content="Nortel | Automatización y Seguridad">
   <meta property="og:description" content="Más de 30 años protegiendo hogares, comercios y empresas.">
-  <meta property="og:image" content="assets/hero-gate.png">
+  <meta property="og:image" data-versioned-content="assets/hero-gate.png">
   <meta property="og:url" content="https://nortelautomatizacion.com.ar/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" data-versioned-content="assets/hero-gate.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" data-versioned-href="styles.css">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script type="module">
+    import { getVersionedAssetUrl } from "./app-version.js";
+    document.querySelectorAll("[data-versioned-href]").forEach(el => {
+      el.href = getVersionedAssetUrl(el.dataset.versionedHref);
+    });
+    document.querySelectorAll("[data-versioned-content]").forEach(el => {
+      el.content = getVersionedAssetUrl(el.dataset.versionedContent);
+    });
+    const manifestLink = document.querySelector("[data-dynamic-manifest]");
+    if (manifestLink) {
+      const iconRoot = manifestLink.dataset.iconRoot;
+      const manifest = {
+        name: "Nortel Automatización",
+        short_name: "Nortel",
+        icons: [
+          { src: new URL(getVersionedAssetUrl(`${iconRoot}/android-chrome-192x192.png`), document.baseURI).href, sizes: "192x192", type: "image/png" },
+          { src: new URL(getVersionedAssetUrl(`${iconRoot}/android-chrome-512x512.png`), document.baseURI).href, sizes: "512x512", type: "image/png" },
+        ],
+        theme_color: "#FF5A1F",
+        background_color: "#FFFFFF",
+        display: "standalone",
+      };
+      manifestLink.href = URL.createObjectURL(new Blob([JSON.stringify(manifest)], { type: "application/manifest+json" }));
+    }
+  </script>
   <script type="application/ld+json" id="local-business-schema"></script>
 </head>
-<body>
+<body data-site-root=".">
   <header class="site-header">
     <div class="container header-inner">
       <a href="#inicio" class="brand" aria-label="Nortel, ir al inicio">
@@ -35,10 +62,11 @@
       <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><i class="ph ph-list"></i></button>
       <nav class="main-nav" aria-label="Navegación principal">
         <a class="active" href="#inicio">Inicio</a>
-        <a href="#nosotros">Nosotros</a>
+        <a href="/nosotros/">Nosotros</a>
         <a href="#servicios">Servicios</a>
+        <a href="#productos">Productos</a>
         <a href="#contacto">Contacto</a>
-        <a class="btn btn-small nav-cta" data-link="whatsapp" target="_blank" rel="noopener"><i class="ph ph-whatsapp-logo"></i> WhatsApp</a>
+        <a class="btn btn-small nav-cta" data-link="whatsapp" target="_blank" rel="noopener noreferrer"><i class="ph ph-whatsapp-logo"></i> WhatsApp</a>
       </nav>
     </div>
   </header>
@@ -51,7 +79,7 @@
         <h1>Automatizando accesos y protegiendo <span>hogares, comercios y empresas.</span></h1>
         <p class="hero-copy">Instalación, reparación y mantenimiento de portones automáticos, cámaras de seguridad y sistemas de control de acceso.</p>
         <div class="button-row">
-          <a class="btn" data-link="whatsapp" target="_blank" rel="noopener"><i class="ph ph-whatsapp-logo"></i> Escribinos por WhatsApp</a>
+          <a class="btn" data-link="whatsapp" target="_blank" rel="noopener noreferrer"><i class="ph ph-whatsapp-logo"></i> Escribinos por WhatsApp</a>
           <a class="btn btn-outline" href="#contacto">Solicitar presupuesto</a>
         </div>
       </div>
@@ -71,7 +99,7 @@
           <h2>Más de 30 años brindando soluciones de calidad</h2>
           <p>En Nortel combinamos experiencia, tecnología y atención personalizada para ofrecer <strong>soluciones seguras y confiables.</strong></p>
           <p>Trabajamos con equipos de primeras marcas y acompañamos a nuestros clientes antes, durante y después de cada proyecto.</p>
-          <a href="#contacto" class="btn">Conocer más sobre nosotros</a>
+          <a href="/nosotros/" class="btn">Conocer más sobre nosotros</a>
         </div>
         <div class="about-image reveal"><img data-image="aboutGate" alt="Portón automático negro instalado en una residencia"></div>
       </div>
@@ -98,6 +126,23 @@
       </div>
     </section>
 
+    <section class="products section" id="productos">
+      <div class="container products-inner">
+        <div class="products-intro reveal">
+          <p class="eyebrow">Nuestros productos</p>
+          <h2>Soluciones confiables<br>para tu seguridad</h2>
+          <p>En Nortel ofrecemos productos de alta calidad para automatizar, proteger y controlar tus accesos. Tecnología confiable, instalación profesional y soporte garantizado.</p>
+        </div>
+        <div class="product-features" id="product-features"></div>
+        <div class="products-heading reveal">
+          <p class="eyebrow">Nuestros productos</p>
+          <p>Descubrí nuestra variedad de productos diseñados para brindarte seguridad, confort y eficiencia en cada solución.</p>
+        </div>
+        <div class="product-list" id="product-list"></div>
+        <a href="#contacto" class="btn products-more">Ver más productos <i class="ph ph-arrow-right"></i></a>
+      </div>
+    </section>
+
     <section class="final-cta" id="contacto">
       <div class="container cta-inner">
         <div>
@@ -106,7 +151,7 @@
           <p>Y recibí asesoramiento personalizado.</p>
         </div>
         <div class="cta-actions">
-          <a class="btn" data-link="whatsapp" target="_blank" rel="noopener"><i class="ph ph-whatsapp-logo"></i> Escribinos por WhatsApp</a>
+          <a class="btn" data-link="whatsapp" target="_blank" rel="noopener noreferrer"><i class="ph ph-whatsapp-logo"></i> Escribinos por WhatsApp</a>
           <a class="btn btn-outline-light" data-link="phone"><i class="ph ph-phone"></i> Llamanos ahora</a>
         </div>
       </div>
@@ -122,16 +167,24 @@
         </a>
         <p>Más de 30 años brindando soluciones de automatización y seguridad electrónica para hogares, comercios, industrias y consorcios.</p>
       </div>
-      <div><h3>Enlaces rápidos</h3><a href="#inicio">Inicio</a><a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a><a href="#contacto">Contacto</a></div>
+      <div><h3>Enlaces rápidos</h3><a href="#inicio">Inicio</a><a href="/nosotros/">Nosotros</a><a href="#servicios">Servicios</a><a href="#productos">Productos</a><a href="#contacto">Contacto</a></div>
       <div><h3>Servicios</h3><a href="#servicios">Automatización de Portones</a><a href="#servicios">Cámaras de Seguridad</a><a href="#servicios">Control de Accesos</a><a href="#servicios">Servicio Técnico</a></div>
-      <div><h3>Contacto</h3><a data-link="phone"><i class="ph ph-phone"></i> <span data-phone></span></a><a data-link="whatsapp" target="_blank" rel="noopener"><i class="ph ph-whatsapp-logo"></i> 11 4448-8098</a><a data-link="email"><i class="ph ph-envelope"></i> <span data-email></span></a><a data-link="maps" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i> <span data-address></span></a></div>
+      <div><h3>Contacto</h3><a data-link="phone"><i class="ph ph-phone"></i> <span data-phone></span></a><a data-link="whatsapp" target="_blank" rel="noopener noreferrer"><i class="ph ph-whatsapp-logo"></i> <span data-whatsapp-display></span></a><a data-link="email"><i class="ph ph-envelope"></i> <span data-email></span></a><a data-link="maps" target="_blank" rel="noopener noreferrer"><i class="ph ph-map-pin"></i> <span data-address></span></a></div>
     </div>
     <div class="container footer-bottom"><span>© <span id="year"></span> Nortel Automatización de Portones. Todos los derechos reservados.</span><span>Diseñado para brindar seguridad y confianza.</span></div>
   </footer>
 
-  <a class="floating-whatsapp" data-link="whatsappFloating" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
+  <a class="floating-whatsapp" data-link="whatsappFloating" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
 
-  <script src="constants.js"></script>
-  <script src="script.js"></script>
+  <script type="module">
+    import { getVersionedAssetUrl } from "./app-version.js";
+
+    const [{ SITE_CONSTANTS }, { initSite }] = await Promise.all([
+      import(getVersionedAssetUrl("./constants.js")),
+      import(getVersionedAssetUrl("./script.js")),
+    ]);
+
+    initSite(SITE_CONSTANTS);
+  </script>
 </body>
 </html>

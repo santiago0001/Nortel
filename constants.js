@@ -1,14 +1,15 @@
-const SITE_CONFIG = {
+export const SITE_CONSTANTS = {
   companyName: "Nortel",
   slogan: "Automatización de Portones y Cámaras de Seguridad",
   yearsExperience: "+30",
   phone: "+54 9 11 44488-098",
+  whatsappDisplay: "11 4448-8098",
   whatsappPrimary: "5491144488098",
   whatsappFloatingNumber: "5491144488098",
   whatsappText: "Hola Nortel, quiero solicitar un presupuesto.",
   whatsappFloatingText: "Hola Nortel, quiero hacer una consulta desde la web.",
   email: "electronicanortel@gmail.com",
-  address: " Manzone 879 Acassuso, Buenos Aires",
+  address: "Manzone 879 Acassuso, Buenos Aires",
   instagram: "https://www.instagram.com/nortel.ok/",
   googleMaps:
     "https://www.google.com/maps/search/?api=1&query=Av.+Fleming+900,+Martínez,+Buenos+Aires",
@@ -16,7 +17,10 @@ const SITE_CONFIG = {
   images: {
     logo: "imagenes/logo.png",
     heroGate: "assets/hero-gate.png",
-    aboutGate: "assets/nosotros.jpeg",
+    aboutGate: "imagenes/nosotros/portada.jpeg",
+    aboutHero: "imagenes/nosotros/portada.jpeg",
+    aboutStory: "imagenes/nosotros/portada-ppa.jpeg",
+    aboutCameras: "imagenes/nosotros/camaras.jpeg",
     serviceAutomation: "",
     serviceCameras: "",
     serviceAccess: "",
@@ -114,4 +118,50 @@ const SITE_CONFIG = {
     "ROSSI",
     "CAME",
   ],
+  productFeatures: [
+    { icon: "ph-shield-check", title: "Seguridad y protección" },
+    { icon: "ph-gear-six", title: "Automatización Inteligente" },
+    { icon: "ph-clock", title: "Rendimiento y durabilidad" },
+    { icon: "ph-wrench", title: "Instalación y soporte técnico" },
+  ],
+  featuredProducts: [
+    {
+      title: "Controles Remotos",
+      description:
+        "Controles confiables para apertura de portones y sistemas de acceso.",
+      image: "imagenes/productos-destacados/control-remoto.jpeg",
+    },
+    {
+      title: "Cámaras de Seguridad",
+      description:
+        "Vigilá lo que más importa con cámaras de alta definición y visión nocturna.",
+      image: "imagenes/productos-destacados/camara.jpeg",
+    },
+    {
+      title: "Motores para Portones",
+      description:
+        "Automatización potente y silenciosa para portones corredizos.",
+      image: "imagenes/productos-destacados/motor.jpeg",
+    },
+    {
+      title: "Kits de Automatización",
+      description:
+        "Kits completos para automatizar tu portón de forma segura y eficiente.",
+      image: "imagenes/productos-destacados/kit-ppa.jpeg",
+    },
+    {
+      title: "Motores de Alto Rendimiento",
+      description:
+        "Equipos robustos y duraderos para uso residencial, comercial e industrial.",
+      image: "imagenes/productos-destacados/motores.jpeg",
+    },
+    {
+      title: "Accesorios y Repuestos",
+      description:
+        "Todo lo que necesitás para el mantenimiento y mejora de tu sistema.",
+      image: "imagenes/productos-destacados/repuestos.jpeg",
+    },
+  ],
 };
+
+export const SITE_CONFIG = SITE_CONSTANTS;
