@@ -2,17 +2,21 @@ export const SITE_CONSTANTS = {
   companyName: "Nortel",
   slogan: "Automatización de Portones y Cámaras de Seguridad",
   yearsExperience: "+30",
-  phone: "+54 9 11 44488-098",
+  phone: "(011) 4793-8666",
+  mobile: "+54 9 11 4448-8098",
   whatsappDisplay: "11 4448-8098",
   whatsappPrimary: "5491144488098",
   whatsappFloatingNumber: "5491144488098",
   whatsappText: "Hola Nortel, quiero solicitar un presupuesto.",
   whatsappFloatingText: "Hola Nortel, quiero hacer una consulta desde la web.",
   email: "electronicanortel@gmail.com",
-  address: "Manzone 879 Acassuso, Buenos Aires",
+  address: "Manzone 879, Acassuso",
+  addressLong: "Manzone 879, Acassuso, Provincia de Buenos Aires",
   instagram: "https://www.instagram.com/nortel.ok/",
   googleMaps:
-    "https://www.google.com/maps/search/?api=1&query=Av.+Fleming+900,+Martínez,+Buenos+Aires",
+    "https://www.google.com/maps/search/?api=1&query=Manzone+879,+Acassuso,+Buenos+Aires",
+  googleMapsEmbed:
+    "https://www.google.com/maps?q=Manzone+879,+Acassuso,+Buenos+Aires&output=embed",
   siteUrl: "https://nortelautomatizacion.com.ar/",
   images: {
     logo: "imagenes/logo.png",
@@ -35,6 +39,20 @@ export const SITE_CONSTANTS = {
     email: "",
     instagram: "",
     maps: "",
+  },
+  contact: {
+    openingHours: [
+      { title: "Lunes a Viernes", text: "9:00 a 18:00 hs" },
+      { title: "Sábados", text: "10:00 a 13:00 hs" },
+    ],
+    services: [
+      "Automatización de portones",
+      "Cámaras de seguridad",
+      "Control de accesos",
+      "Servicio técnico",
+      "Mantenimiento",
+      "Otro",
+    ],
   },
   services: [
     {

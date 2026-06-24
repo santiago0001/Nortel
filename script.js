@@ -28,9 +28,14 @@ export function initSite(siteConfig) {
   document.querySelectorAll("[data-company]").forEach(el => el.textContent = siteConfig.companyName.toUpperCase());
   document.querySelectorAll("[data-slogan]").forEach(el => el.textContent = siteConfig.slogan);
   document.querySelectorAll("[data-phone]").forEach(el => el.textContent = siteConfig.phone);
+  document.querySelectorAll("[data-mobile]").forEach(el => el.textContent = siteConfig.mobile);
   document.querySelectorAll("[data-whatsapp-display]").forEach(el => el.textContent = siteConfig.whatsappDisplay);
   document.querySelectorAll("[data-email]").forEach(el => el.textContent = siteConfig.email);
   document.querySelectorAll("[data-address]").forEach(el => el.textContent = siteConfig.address);
+  document.querySelectorAll("[data-address-long]").forEach(el => el.textContent = siteConfig.addressLong);
+  document.querySelectorAll("[data-map-embed]").forEach(el => {
+    el.src = siteConfig.googleMapsEmbed;
+  });
   document.querySelectorAll("[data-link]").forEach(el => {
     const href = siteConfig.links[el.dataset.link];
     if (!href) return;
@@ -116,6 +121,48 @@ export function initSite(siteConfig) {
           <a href="#contacto">Ver más <i class="ph ph-arrow-right"></i></a>
         </div>
       </article>`).join("");
+  }
+
+  const contactHours = document.getElementById("contact-hours");
+  if (contactHours) {
+    contactHours.innerHTML = siteConfig.contact.openingHours.map((hour, index) => `
+      <div class="contact-hours-row${index ? " contact-hours-row-separated" : ""}">
+        <strong>${hour.title}</strong>
+        <span>${hour.text}</span>
+      </div>`).join("");
+  }
+
+  const contactService = document.getElementById("contact-service");
+  if (contactService) {
+    contactService.innerHTML = '<option value="">Seleccioná un servicio</option>' + siteConfig.contact.services.map(service => (
+      `<option value="${service}">${service}</option>`
+    )).join("");
+  }
+
+  const contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", event => {
+      event.preventDefault();
+      if (!contactForm.reportValidity()) return;
+
+      const formData = new FormData(contactForm);
+      const name = String(formData.get("name") || "").trim();
+      const phone = String(formData.get("phone") || "").trim();
+      const email = String(formData.get("email") || "").trim();
+      const service = String(formData.get("service") || "").trim();
+      const message = String(formData.get("message") || "").trim();
+      const whatsappMessage = [
+        "Hola Nortel, quiero solicitar un presupuesto.",
+        "",
+        `Nombre: ${name}`,
+        `Teléfono: ${phone}`,
+        email ? `Email: ${email}` : "",
+        service ? `Servicio de interés: ${service}` : "",
+        message ? `Mensaje: ${message}` : "",
+      ].filter(Boolean).join("\n");
+
+      window.location.href = `https://wa.me/${siteConfig.whatsappPrimary}?text=${encodeURIComponent(whatsappMessage)}`;
+    });
   }
 
   const menuButton = document.querySelector(".menu-toggle");
