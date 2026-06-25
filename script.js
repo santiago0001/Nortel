@@ -1,4 +1,4 @@
-import { getVersionedAssetUrl } from "./app-version.js";
+const getVersionedAssetUrl = window.getVersionedAssetUrl || (url => url);
 
 function isExternalUrl(url) {
   return /^(https?:|mailto:|tel:|#)/.test(url);

@@ -22,15 +22,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" data-versioned-href="../styles.css">
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  <script type="module">
-    import { getVersionedAssetUrl } from "../app-version.js";
+  <script src="../app-version.js"></script>
+  <script>
+    document.write(`<link rel="stylesheet" href="${window.getVersionedAssetUrl("../styles.css")}" data-versioned-href="../styles.css">`);
     document.querySelectorAll("[data-versioned-href]").forEach(el => {
-      el.href = getVersionedAssetUrl(el.dataset.versionedHref);
+      el.href = window.getVersionedAssetUrl(el.dataset.versionedHref);
     });
     document.querySelectorAll("[data-versioned-content]").forEach(el => {
-      el.content = getVersionedAssetUrl(el.dataset.versionedContent);
+      el.content = window.getVersionedAssetUrl(el.dataset.versionedContent);
     });
     const manifestLink = document.querySelector("[data-dynamic-manifest]");
     if (manifestLink) {
@@ -39,8 +38,8 @@
         name: "Nortel Automatización",
         short_name: "Nortel",
         icons: [
-          { src: new URL(getVersionedAssetUrl(`${iconRoot}/android-chrome-192x192.png`), document.baseURI).href, sizes: "192x192", type: "image/png" },
-          { src: new URL(getVersionedAssetUrl(`${iconRoot}/android-chrome-512x512.png`), document.baseURI).href, sizes: "512x512", type: "image/png" },
+          { src: new URL(window.getVersionedAssetUrl(`${iconRoot}/android-chrome-192x192.png`), document.baseURI).href, sizes: "192x192", type: "image/png" },
+          { src: new URL(window.getVersionedAssetUrl(`${iconRoot}/android-chrome-512x512.png`), document.baseURI).href, sizes: "512x512", type: "image/png" },
         ],
         theme_color: "#FF5A1F",
         background_color: "#FFFFFF",
@@ -49,6 +48,7 @@
       manifestLink.href = URL.createObjectURL(new Blob([JSON.stringify(manifest)], { type: "application/manifest+json" }));
     }
   </script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body data-site-root="..">
   <header class="site-header">
@@ -177,11 +177,9 @@
   <a class="floating-whatsapp" data-link="whatsappFloating" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
 
   <script type="module">
-    import { getVersionedAssetUrl } from "../app-version.js";
-
     const [{ SITE_CONSTANTS }, { initSite }] = await Promise.all([
-      import(getVersionedAssetUrl("../constants.js")),
-      import(getVersionedAssetUrl("../script.js")),
+      import(window.getVersionedAssetUrl("../constants.js")),
+      import(window.getVersionedAssetUrl("../script.js")),
     ]);
 
     initSite(SITE_CONSTANTS);
