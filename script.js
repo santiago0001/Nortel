@@ -58,6 +58,11 @@ export function initSite(siteConfig) {
     aboutPageHero.style.setProperty("--about-hero-bg", `url("${assetUrl(siteConfig.images.aboutHero)}")`);
   }
 
+  const productsPageHero = document.querySelector(".products-page-hero");
+  if (productsPageHero) {
+    productsPageHero.style.setProperty("--products-hero-bg", `url("${assetUrl(siteConfig.images.productsHero)}")`);
+  }
+
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
 
@@ -118,9 +123,84 @@ export function initSite(siteConfig) {
         <div class="product-card-copy">
           <h3>${product.title}</h3>
           <p>${product.description}</p>
-          <a href="#contacto">Ver más <i class="ph ph-arrow-right"></i></a>
+          <a href="/productos/">Ver más <i class="ph ph-arrow-right"></i></a>
         </div>
       </article>`).join("");
+  }
+
+  const productsPageIntro = document.getElementById("products-page-intro");
+  if (productsPageIntro) {
+    productsPageIntro.innerHTML = `
+      <p class="eyebrow">${siteConfig.productsPage.eyebrow}</p>
+      <h1>${siteConfig.productsPage.title}</h1>
+      <p>${siteConfig.productsPage.description}</p>
+      <span class="contact-hero-line" aria-hidden="true"></span>`;
+  }
+
+  const productsPageHeading = document.getElementById("products-page-heading");
+  if (productsPageHeading) {
+    productsPageHeading.innerHTML = `
+      <span aria-hidden="true"></span>
+      <h2>${siteConfig.productsPage.sectionTitle}</h2>
+      <p>${siteConfig.productsPage.sectionText}</p>`;
+  }
+
+  const productsPageGrid = document.getElementById("products-page-grid");
+  if (productsPageGrid) {
+    productsPageGrid.innerHTML = siteConfig.productsPage.items.map(product => {
+      const href = `https://wa.me/${siteConfig.whatsappPrimary}?text=${encodeURIComponent(product.whatsappText)}`;
+      return `
+        <article class="products-page-card reveal">
+          <img src="${assetUrl(product.image)}" alt="${product.title}" loading="lazy" decoding="async">
+          <div class="products-page-card-title">
+            <i class="ph ${product.icon}" aria-hidden="true"></i>
+            <h2>${product.title}</h2>
+          </div>
+          <p>${product.description}</p>
+          <a class="btn products-page-consult" href="${href}" target="_blank" rel="noopener noreferrer">Consultar</a>
+        </article>`;
+    }).join("");
+  }
+
+  const productsPageBenefits = document.getElementById("products-page-benefits");
+  if (productsPageBenefits) {
+    productsPageBenefits.innerHTML = siteConfig.productsPage.benefits.map(benefit => `
+      <article>
+        <i class="ph ${benefit.icon}" aria-hidden="true"></i>
+        <h3>${benefit.title}</h3>
+        <p>${benefit.text}</p>
+      </article>`).join("");
+  }
+
+  const productsPageCta = document.getElementById("products-page-cta");
+  if (productsPageCta) {
+    const copy = productsPageCta.querySelector("[data-products-cta-copy]");
+    const button = productsPageCta.querySelector("[data-products-cta-button]");
+    if (copy) {
+      copy.innerHTML = `<h2>${siteConfig.productsPage.cta.title}</h2><p>${siteConfig.productsPage.cta.text}</p>`;
+    }
+    if (button) button.textContent = siteConfig.productsPage.cta.button;
+  }
+
+  const servicesPageGrid = document.getElementById("services-page-grid");
+  if (servicesPageGrid) {
+    servicesPageGrid.innerHTML = siteConfig.servicesPage.map(service => `
+      <article class="services-page-card reveal">
+        <div class="services-page-card-heading">
+          <i class="ph ${service.icon}" aria-hidden="true"></i>
+          <h2>${service.title}</h2>
+        </div>
+        <span class="services-page-card-line" aria-hidden="true"></span>
+        <img src="${assetUrl(service.image)}" alt="${service.title}" loading="lazy" decoding="async">
+        <ul>
+          ${service.items.map(item => `<li>${item}</li>`).join("")}
+        </ul>
+      </article>`).join("");
+  }
+
+  const servicesBrandGrid = document.getElementById("services-brand-grid");
+  if (servicesBrandGrid) {
+    servicesBrandGrid.innerHTML = siteConfig.serviceBrands.map(brand => `<span>${brand}</span>`).join("");
   }
 
   const contactHours = document.getElementById("contact-hours");

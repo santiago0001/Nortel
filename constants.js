@@ -25,6 +25,7 @@ export const SITE_CONSTANTS = {
     aboutHero: "imagenes/nosotros/portada.jpeg",
     aboutStory: "imagenes/nosotros/portada-ppa.jpeg",
     aboutCameras: "imagenes/nosotros/camaras.jpeg",
+    productsHero: "imagenes/productos/camaras.jpeg",
     serviceAutomation: "",
     serviceCameras: "",
     serviceAccess: "",
@@ -80,6 +81,45 @@ export const SITE_CONSTANTS = {
         "Diagnóstico, reparación y mantenimiento de equipos y automatizaciones.",
     },
   ],
+  servicesPage: [
+    {
+      icon: "ph-garage",
+      title: "Automatización de Portones",
+      image: "imagenes/servicios/automatizacion-portones.jpeg",
+      items: ["Corredizos", "Levadizos", "Pivotantes", "Instalación", "Reparación", "Mantenimiento"],
+    },
+    {
+      icon: "ph-video-camera",
+      title: "Cámaras de Seguridad",
+      image: "imagenes/servicios/camaras.jpeg",
+      items: ["DVR", "NVR", "Cámaras IP", "Monitoreo remoto", "Grabación digital"],
+    },
+    {
+      icon: "ph-fingerprint",
+      title: "Control de Accesos",
+      image: "imagenes/servicios/controles-de-acceso.jpeg",
+      items: ["Ingreso vehicular", "Ingreso peatonal", "Consorcios", "Empresas"],
+    },
+    {
+      icon: "ph-bell-ringing",
+      title: "Alarmas",
+      image: "imagenes/servicios/alarma.jpg",
+      items: ["Residenciales", "Comerciales", "Sensores", "Sistemas de protección"],
+    },
+    {
+      icon: "ph-wrench",
+      title: "Servicio Técnico",
+      image: "imagenes/servicios/servicio-tecnico.jpeg",
+      items: ["Diagnóstico", "Reparaciones", "Mantenimiento preventivo", "Repuestos"],
+    },
+    {
+      icon: "ph-shopping-cart",
+      title: "Venta de Accesorios",
+      image: "imagenes/servicios/venta-accesorios.jpeg",
+      items: ["Controles remotos", "Discos rígidos", "Fuentes", "Repuestos", "Accesorios para automatización"],
+    },
+  ],
+  serviceBrands: ["HIKVISION", "Dahua", "PPA", "FAAC", "Nice", "ZKTeco", "SAMSUNG", "Western Digital", "intelbras", "SEAGATE"],
   benefits: [
     {
       icon: "ph-medal",
@@ -180,6 +220,125 @@ export const SITE_CONSTANTS = {
       image: "imagenes/productos-destacados/repuestos.jpeg",
     },
   ],
+  productsPage: {
+    eyebrow: "Productos",
+    title: "Todo lo que necesitás para tu seguridad y automatización",
+    description:
+      "Contamos con productos de primer nivel para brindar soluciones confiables, duraderas y adaptadas a cada necesidad.",
+    sectionTitle: "Nuestros productos",
+    sectionText:
+      "Equipos y accesorios seleccionados para garantizar seguridad, comodidad y tecnología.",
+    items: [
+      {
+        icon: "ph-gear-six",
+        title: "Motores para Portones",
+        image: "imagenes/productos/motores.jpeg",
+        description:
+          "Automatización para portones corredizos, levadizos y pivotantes. Equipos resistentes, seguros y de alto rendimiento.",
+        whatsappText:
+          "Estoy interesado en motores para portones de su página web.",
+      },
+      {
+        icon: "ph-garage",
+        title: "Kit de Automatización",
+        image: "imagenes/productos/kit-automatizacion.jpeg",
+        description:
+          "Kits completos con motor, cremallera, controles y accesorios para una instalación rápida y confiable.",
+        whatsappText:
+          "Estoy interesado en kits de automatización de su página web.",
+      },
+      {
+        icon: "ph-video-camera",
+        title: "Cámaras de Seguridad",
+        image: "imagenes/productos/camaras.jpeg",
+        description:
+          "Cámaras analógicas e IP de alta definición para monitoreo en tiempo real y grabación digital.",
+        whatsappText:
+          "Estoy interesado en cámaras de seguridad de su página web.",
+      },
+      {
+        icon: "ph-monitor",
+        title: "DVR / NVR",
+        image: "imagenes/productos/dvr.webp",
+        description:
+          "Grabadores digitales para sistemas de videovigilancia. Acceso remoto, almacenamiento seguro y fácil gestión.",
+        whatsappText:
+          "Estoy interesado en DVR / NVR de su página web.",
+      },
+      {
+        icon: "ph-fingerprint",
+        title: "Control de Accesos",
+        image: "imagenes/productos/control-acceso.jpeg",
+        description:
+          "Sistemas para ingreso peatonal y vehicular. Soluciones para consorcios, empresas y comercios.",
+        whatsappText:
+          "Estoy interesado en controles de acceso de su página web.",
+      },
+      {
+        icon: "ph-hand-tap",
+        title: "Controles Remotos",
+        image: "imagenes/productos/control-remoto.jpeg",
+        description:
+          "Controles para portones y automatismos. Seguridad y comodidad en la apertura de tu acceso.",
+        whatsappText:
+          "Estoy interesado en controles remotos de su página web.",
+      },
+      {
+        icon: "ph-shield-check",
+        title: "Alarmas",
+        image: "imagenes/productos/alarma.jpg",
+        description:
+          "Sistemas de alarma cableados e inalámbricos para protección de hogares, comercios e industrias.",
+        whatsappText:
+          "Estoy interesado en alarmas de su página web.",
+      },
+      {
+        icon: "ph-plugs-connected",
+        title: "Accesorios",
+        image: "imagenes/productos/accesorios.jpeg",
+        description:
+          "Repuestos, fuentes, fotocélulas, cerraduras electromagnéticas y más accesorios para tus instalaciones.",
+        whatsappText:
+          "Estoy interesado en accesorios de automatización de su página web.",
+      },
+      {
+        icon: "ph-hard-drives",
+        title: "Discos Rígidos",
+        image: "imagenes/productos/disco-rigido.jpg",
+        description:
+          "Almacenamiento diseñado para videovigilancia, con mayor durabilidad y rendimiento.",
+        whatsappText:
+          "Estoy interesado en discos rígidos de su página web.",
+      },
+    ],
+    benefits: [
+      {
+        icon: "ph-shield-check",
+        title: "Calidad Garantizada",
+        text: "Trabajamos con marcas líderes y productos de alta calidad.",
+      },
+      {
+        icon: "ph-headset",
+        title: "Asesoramiento",
+        text: "Te ayudamos a elegir la mejor solución para tu necesidad.",
+      },
+      {
+        icon: "ph-wrench",
+        title: "Servicio Técnico",
+        text: "Instalación, reparación y mantenimiento especializado.",
+      },
+      {
+        icon: "ph-package",
+        title: "Stock Permanente",
+        text: "Contamos con stock de productos y repuestos para entregas rápidas.",
+      },
+    ],
+    cta: {
+      title: "¿No sabés qué producto necesitás?",
+      text: "Consultanos y te asesoramos sin compromiso.",
+      button: "Contactanos",
+    },
+  },
 };
 
 export const SITE_CONFIG = SITE_CONSTANTS;
