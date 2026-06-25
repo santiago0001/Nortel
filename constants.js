@@ -17,7 +17,7 @@ export const SITE_CONSTANTS = {
     "https://www.google.com/maps/search/?api=1&query=Manzone+879,+Acassuso,+Buenos+Aires",
   googleMapsEmbed:
     "https://www.google.com/maps?q=Manzone+879,+Acassuso,+Buenos+Aires&output=embed",
-  siteUrl: "https://nortelautomatizacion.com.ar/",
+  siteUrl: "https://nortel.com.ar/",
   images: {
     logo: "imagenes/logo.png",
     heroGate: "assets/hero-gate.png",
@@ -300,15 +300,6 @@ export const SITE_CONSTANTS = {
           "Repuestos, fuentes, fotocélulas, cerraduras electromagnéticas y más accesorios para tus instalaciones.",
         whatsappText:
           "Estoy interesado en accesorios de automatización de su página web.",
-      },
-      {
-        icon: "ph-hard-drives",
-        title: "Discos Rígidos",
-        image: "imagenes/productos/disco-rigido.jpg",
-        description:
-          "Almacenamiento diseñado para videovigilancia, con mayor durabilidad y rendimiento.",
-        whatsappText:
-          "Estoy interesado en discos rígidos de su página web.",
       },
     ],
     benefits: [
