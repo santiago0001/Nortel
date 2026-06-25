@@ -24,6 +24,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
   <script src="../app-version.js"></script>
   <script>
+    window.getVersionedAssetUrl ||= url => {
+      if (!url || url.startsWith("http") || url.startsWith("mailto:") || url.startsWith("tel:") || url.startsWith("#")) return url;
+      return `${url}${url.includes("?") ? "&" : "?"}v=${Date.now()}`;
+    };
     document.write(`<link rel="stylesheet" href="${window.getVersionedAssetUrl("../styles.css")}" data-versioned-href="../styles.css">`);
     document.querySelectorAll("[data-versioned-href]").forEach(el => {
       el.href = window.getVersionedAssetUrl(el.dataset.versionedHref);
