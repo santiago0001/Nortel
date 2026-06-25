@@ -63,14 +63,24 @@ rel="noopener noreferrer"
 
 El proyecto debe incluir un archivo `app-version.js` para centralizar la versión de assets.
 
-Ejemplo:
+Debe cargarse como script clásico, no como módulo, antes del CSS local. Esto evita problemas cuando un navegador tiene cacheada una versión anterior del versionador.
+
+Ejemplo recomendado:
 
 ```js
-export const APP_VERSION = "1.0.0";
+const APP_VERSION = "1.0.0";
 
-export function getVersionedAssetUrl(url) {
-  return `${url}?v=${APP_VERSION}`;
+function getVersionedAssetUrl(url) {
+  if (!url || url.startsWith("http") || url.startsWith("mailto:") || url.startsWith("tel:") || url.startsWith("#")) {
+    return url;
+  }
+
+  const separator = url.includes("?") ? "&" : "?";
+  return `${url}${separator}v=${APP_VERSION}`;
 }
+
+window.APP_VERSION = APP_VERSION;
+window.getVersionedAssetUrl = getVersionedAssetUrl;
 ```
 
 Todos los assets locales importantes deben cargarse usando `getVersionedAssetUrl`.
@@ -87,9 +97,65 @@ Ejemplos:
 Cuando se necesite forzar una actualización para los visitantes, se debe cambiar solamente `APP_VERSION`, por ejemplo:
 
 ```js
-export const APP_VERSION = "1.0.1";
+const APP_VERSION = "1.0.1";
 ```
 
+## Carga temprana del CSS y prevención de FOUC
+
+El CSS principal debe cargarse lo antes posible para evitar que el usuario vea un pantallazo de HTML sin estilos.
+
+No se debe esperar a que cargue el módulo principal para asignar el CSS.
+
+Patrón recomendado en cada HTML:
+
+```html
+<script src="app-version.js"></script>
+<script>
+  window.getVersionedAssetUrl ||= url => {
+    if (!url || url.startsWith("http") || url.startsWith("mailto:") || url.startsWith("tel:") || url.startsWith("#")) return url;
+    return `${url}${url.includes("?") ? "&" : "?"}v=${Date.now()}`;
+  };
+
+  document.write(`<link rel="stylesheet" href="${window.getVersionedAssetUrl("styles.css")}" data-versioned-href="styles.css" onload="document.documentElement.classList.add('css-ready')">`);
+</script>
+```
+
+En páginas dentro de subcarpetas, ajustar rutas:
+
+```html
+<script src="../app-version.js"></script>
+<script>
+  window.getVersionedAssetUrl ||= url => {
+    if (!url || url.startsWith("http") || url.startsWith("mailto:") || url.startsWith("tel:") || url.startsWith("#")) return url;
+    return `${url}${url.includes("?") ? "&" : "?"}v=${Date.now()}`;
+  };
+
+  document.write(`<link rel="stylesheet" href="${window.getVersionedAssetUrl("../styles.css")}" data-versioned-href="../styles.css" onload="document.documentElement.classList.add('css-ready')">`);
+</script>
+```
+
+La función fallback con `Date.now()` es importante: si un navegador tiene cacheado un `app-version.js` viejo o roto, la página igual debe poder cargar el CSS.
+
+Para evitar el flash visual mientras carga el CSS, cada HTML debe incluir CSS crítico inline y un loader mínimo:
+
+```html
+<style>
+  html:not(.css-ready) body{overflow:hidden;background:#fff}
+  html:not(.css-ready) body>*:not(.page-loader){visibility:hidden}
+  .page-loader{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;background:#fff;color:#ff5a1f}
+  .page-loader:before{content:"";width:46px;height:46px;border:4px solid rgba(255,90,31,.18);border-top-color:#ff5a1f;border-radius:50%;animation:loader-spin .8s linear infinite}
+  html.css-ready .page-loader{display:none}
+  @keyframes loader-spin{to{transform:rotate(360deg)}}
+</style>
+```
+
+Y al comienzo del `body`:
+
+```html
+<div class="page-loader" aria-label="Cargando sitio"></div>
+```
+
+Este loader debe ocultar el contenido real hasta que el CSS principal dispare `onload` y agregue la clase `css-ready` al elemento `html`.
 
 ## Inicialización JavaScript
 
@@ -107,8 +173,19 @@ Y desde `index.html`:
 
 ```js
 const [{ SITE_CONSTANTS }, { initSite }] = await Promise.all([
-  import(getVersionedAssetUrl("./constants.js")),
-  import(getVersionedAssetUrl("./script.js")),
+  import(window.getVersionedAssetUrl("./constants.js")),
+  import(window.getVersionedAssetUrl("./script.js")),
+]);
+
+initSite(SITE_CONSTANTS);
+```
+
+En páginas dentro de subcarpetas:
+
+```js
+const [{ SITE_CONSTANTS }, { initSite }] = await Promise.all([
+  import(window.getVersionedAssetUrl("../constants.js")),
+  import(window.getVersionedAssetUrl("../script.js")),
 ]);
 
 initSite(SITE_CONSTANTS);
