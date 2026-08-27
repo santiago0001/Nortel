@@ -13,6 +13,8 @@ export const SITE_CONSTANTS = {
   address: "Manzone 879, Acassuso",
   addressLong: "Manzone 879, Acassuso, Provincia de Buenos Aires",
   instagram: "https://www.instagram.com/nortel.ok/",
+  facebook: "https://www.facebook.com/electronicanortel",
+  tiktok: "https://www.tiktok.com/@nortel.ok",
   googleMaps:
     "https://www.google.com/maps/search/?api=1&query=Manzone+879,+Acassuso,+Buenos+Aires",
   googleMapsEmbed:
@@ -39,8 +41,15 @@ export const SITE_CONSTANTS = {
     phone: "",
     email: "",
     instagram: "",
+    facebook: "",
+    tiktok: "",
     maps: "",
   },
+  socialLinks: [
+    { name: "Instagram", icon: "ph-instagram-logo", key: "instagram" },
+    { name: "Facebook", icon: "ph-facebook-logo", key: "facebook" },
+    { name: "TikTok", icon: "ph-tiktok-logo", key: "tiktok" },
+  ],
   contact: {
     openingHours: [
       { title: "Lunes a Viernes", text: "9:00 a 18:00 hs" },

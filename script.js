@@ -23,6 +23,8 @@ export function initSite(siteConfig) {
   siteConfig.links.phone = `tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`;
   siteConfig.links.email = `mailto:${siteConfig.email}`;
   siteConfig.links.instagram = siteConfig.instagram;
+  siteConfig.links.facebook = siteConfig.facebook;
+  siteConfig.links.tiktok = siteConfig.tiktok;
   siteConfig.links.maps = siteConfig.googleMaps;
 
   document.querySelectorAll("[data-company]").forEach(el => el.textContent = siteConfig.companyName.toUpperCase());
@@ -48,6 +50,14 @@ export function initSite(siteConfig) {
   document.querySelectorAll("[data-image]").forEach(el => {
     const image = siteConfig.images[el.dataset.image];
     if (image) el.src = assetUrl(image);
+  });
+
+  document.querySelectorAll("[data-social-links]").forEach(el => {
+    el.innerHTML = siteConfig.socialLinks.map(social => {
+      const href = siteConfig.links[social.key];
+      if (!href) return "";
+      return `<a href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${social.name} de ${siteConfig.companyName}"><i class="ph ${social.icon}" aria-hidden="true"></i></a>`;
+    }).join("");
   });
 
   const heroImage = document.querySelector(".hero-image");
@@ -296,7 +306,7 @@ export function initSite(siteConfig) {
         addressRegion: "Buenos Aires",
         addressCountry: "AR",
       },
-      sameAs: [siteConfig.instagram],
+      sameAs: [siteConfig.instagram, siteConfig.facebook, siteConfig.tiktok],
       openingHours: "Mo-Fr 08:00-18:00",
       areaServed: ["Martínez", "San Isidro", "Zona Norte"],
       serviceType: ["Automatización de portones", "Cámaras de seguridad", "Control de accesos", "Servicio técnico"],
