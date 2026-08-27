@@ -23,7 +23,7 @@ export const SITE_CONSTANTS = {
     heroGate: "assets/hero-gate.png",
     aboutGate: "imagenes/nosotros/portada.jpeg",
     aboutHero: "imagenes/nosotros/portada.jpeg",
-    aboutStory: "imagenes/nosotros/portada-ppa.jpeg",
+    aboutStory: "imagenes/nosotros/motic.jpeg",
     aboutCameras: "imagenes/nosotros/camaras.jpeg",
     productsHero: "imagenes/productos/camaras.jpeg",
     serviceAutomation: "",
@@ -119,7 +119,7 @@ export const SITE_CONSTANTS = {
       items: ["Controles remotos", "Discos rígidos", "Fuentes", "Repuestos", "Accesorios para automatización"],
     },
   ],
-  serviceBrands: ["HIKVISION", "Dahua", "PPA", "FAAC", "Nice", "ZKTeco", "SAMSUNG", "Western Digital", "intelbras", "SEAGATE"],
+  serviceBrands: ["HIKVISION", "Dahua", "PPA", "MOTIC", "FAAC", "Nice", "APRICLASS", "Western Digital", "Y SEG", "SEAGATE"],
   benefits: [
     {
       icon: "ph-medal",
@@ -171,7 +171,7 @@ export const SITE_CONSTANTS = {
   ],
   brands: [
     { name: "PPA", image: "imagenes/marcas/PPA.png" },
-    "MOTIC",
+    { name: "MOTIC", image: "imagenes/marcas/MOTIC.jpg" },
     "Nice",
     "ROSSI",
     "CAME",
