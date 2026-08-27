@@ -128,7 +128,7 @@ export const SITE_CONSTANTS = {
       items: ["Controles remotos", "Discos rígidos", "Fuentes", "Repuestos", "Accesorios para automatización"],
     },
   ],
-  serviceBrands: ["HIKVISION", "Dahua", "PPA", "MOTIC", "FAAC", "Nice", "APRICLASS", "Western Digital", "Y SEG", "SEAGATE"],
+  serviceBrands: ["HIKVISION", "Dahua", "PPA", "MOTIC", "FAAC", "Nice", "APRICLASS", "Western Digital", "SEG", "SEAGATE"],
   benefits: [
     {
       icon: "ph-medal",
